@@ -1,0 +1,31 @@
+#itineraryContainer{
+    background: black;
+    padding:0.3%;
+    margin:0.3%;
+    border-radius:2%;
+    color:#fff;
+    margin-top:0.2%;
+}
+
+#userPic{
+    height:15vh;
+    background-color: antiquewhite;
+    border-radius:50%;
+}
+
+#itineraryUser{
+flex-direction: row;
+text-align: center;
+float:left;
+}
+
+#eachItineraryContainer{
+    flex-direction: row;
+    height: 50vh;
+   
+}
+
+#activityDisplayContainer{
+  /*   width:50%; */
+    flex-direction: row;
+}
