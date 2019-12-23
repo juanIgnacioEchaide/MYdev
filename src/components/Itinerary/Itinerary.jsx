@@ -1,12 +1,8 @@
-import React from 'react';
-import Activities from './Activities';
-import './Itinerary.css';
-import { useState } from 'react';
-import User from '../../assets/user_logo.png';
-import ItineraryStats from './ItineraryStats';
+import React,{useState} from 'react';
+import PropTypes from 'prop-types';
+import ItineraryAdd from './ItineraryAdd';
 
 const Itinerary = props => {
-
     const[itineraries=[
         {city:'Buenos Aires',
         name: 'Me cago en Buenos Aires',
@@ -17,47 +13,25 @@ const Itinerary = props => {
     
     ]]=useState()
 
+    const [itinerariesAdd, setItinerariesAdd]=useState();
 
-        
-    
+    const addItineraryHandler=event=>{
+        event.preventDefault();
+        setItinerariesAdd(prevItineraries=>[...prevItineraries,{id:Math.random().toString(),...itinerariesAdd}]);      
+     }
 
     return (
-        <div id="itineraryContainer" className="container-fluid">
-               {/* Itineraries by user */}
-            {itineraries.map(
-            item=>
-                <div id="eachItineraryContainer">
+        <div>
 
-                    <div id="itineraryUser" className="row col-md-12">
-                        {/* User's profile picture  */}
-                       <img id="userPic" src={User}/>
-                        {/* Itineraries' data */}
-                         <h3>{item.user}</h3>
+    {itineraries.map(it=><p>{it.city} {it.user} {it.name}</p>)}
 
-                {/* Itinerary's statistics */}
-                <ItineraryStats/>
-                </div>
-
-
-                <div id="activityDisplayContainer">
-                {/* Itinerary´s name & city  */}
-                    <h1>{item.name}</h1> 
-                     {item.city}  
-
-                {/* Carousel of  Itineraries'activities */}
-                <Activities className="col-md-8 p-3"/>
-
-                </div>
-            </div>
-            )}
-
-
-
-           
+            <ItineraryAdd itineraries={itineraries}/>
         </div>
     );
 };
 
+Itinerary.propTypes = {
+    
+};
 
 export default Itinerary;
-
